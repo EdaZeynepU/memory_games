@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../constants/main_colors.dart';
 import 'game_selection_page.dart';
+import 'why.dart';
+import 'tips_for_memories.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -49,8 +51,22 @@ class _HomePageState extends State<HomePage> {
                         ));
                     } ,
                             child: Text("Games",), style: buttonStyle(),),
-                    ElevatedButton(onPressed: (){} , child: Text("Tips for Memory"), style: buttonStyle(),),
-                    ElevatedButton(onPressed: (){} , child: Text("Why These Games"), style: buttonStyle(),),
+                    ElevatedButton(onPressed: (){
+                      Navigator.of(context).push(
+                          MaterialPageRoute(
+                              builder: (context) {
+                                return tipsForMemory();
+                              }
+                          ));
+                    } , child: Text("Tips for Memory"), style: buttonStyle(),),
+                    ElevatedButton(onPressed: (){
+                      Navigator.of(context).push(
+                          MaterialPageRoute(
+                              builder: (context) {
+                                return Why();
+                              }
+                          ));
+                    } , child: Text("Why These Games"), style: buttonStyle(),),
                     ElevatedButton(onPressed: (){} , child: Text("..."), style: buttonStyle(),),
                   ],
                 ),
