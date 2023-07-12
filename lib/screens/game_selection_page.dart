@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:memory_games/games/word_pairs.dart';
 import '../constants/main_colors.dart';
 import '../games/match_colors.dart';
 import '../games/match_cards.dart';
+import '../games/remember_number.dart';
 import '../screens/home_page.dart';
 
 class GameSelectionPage extends StatefulWidget {
@@ -15,7 +17,6 @@ class _GameSelectionPageState extends State<GameSelectionPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: colors.deepPurpleAccent,
       backgroundColor: MainColor.primaryColor,
       body: SafeArea(
         child: Flex(
@@ -60,19 +61,19 @@ class _GameSelectionPageState extends State<GameSelectionPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         GameOptionCard(
-                            gameName: "oyun1",
-                            img: "images/img.jpg",
+                            gameName: "Remember the Number",
+                            img: "images/remember_number.jpg",
                             gamePage: (BuildContext context) {
                               Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => HomePage(),//for now
+                                builder: (context) => RememberNumber(),//for now
                               ));
                             }),
                         GameOptionCard(
-                          gameName: "oyun2",
-                          img: "images/img.jpg",
+                          gameName: "Words Pairs",
+                          img: "images/word_pairs.jpg",
                           gamePage: (BuildContext context) {
                             Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => HomePage(),//for now
+                              builder: (context) => WordPairs(),//for now
                             ));
                           },
                         ),
@@ -90,9 +91,9 @@ class _GameSelectionPageState extends State<GameSelectionPage> {
                             gameName: "oyun3",
                             img: "images/img.jpg",
                             gamePage: (BuildContext context) {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => HomePage(),//for now
-                              ));
+                              // Navigator.of(context).push(MaterialPageRoute(
+                              //   builder: (context) => HomePage(),//for now
+                              // ));
                             }),
                         GameOptionCard(
                           gameName: "back to home",
