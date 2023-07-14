@@ -152,7 +152,7 @@ class _RememberNumberState extends State<RememberNumber> {
                   child: Text("-Done-")),
             ] else ...[
               Container(
-                color: bgIndicator? Colors.blue[900]:Colors.yellow,
+                color: bgIndicator? Colors.blue[900]:MainColor.primaryColor,
                 padding: EdgeInsets.only(left: 30,right: 30,bottom: 10,top: 10),
                 child: Text(
                   "${numPart}",

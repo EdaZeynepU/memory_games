@@ -5,6 +5,7 @@ import '../games/match_colors.dart';
 import '../games/match_cards.dart';
 import '../games/remember_number.dart';
 import '../screens/home_page.dart';
+import '../games/follow_flow.dart';
 
 class GameSelectionPage extends StatefulWidget {
   const GameSelectionPage({Key? key}) : super(key: key);
@@ -88,12 +89,12 @@ class _GameSelectionPageState extends State<GameSelectionPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         GameOptionCard(
-                            gameName: "oyun3",
-                            img: "images/img.jpg",
+                            gameName: "Follow the Flow",
+                            img: "images/follow_flow.jpg",
                             gamePage: (BuildContext context) {
-                              // Navigator.of(context).push(MaterialPageRoute(
-                              //   builder: (context) => HomePage(),//for now
-                              // ));
+                              Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => FollowFlow(),
+                              ));
                             }),
                         GameOptionCard(
                           gameName: "back to home",

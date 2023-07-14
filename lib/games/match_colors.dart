@@ -83,8 +83,6 @@ class _MatchcolorsState extends State<Matchcolors> {
       prevColor = null;
       prev = [];
       isTappedList = [];
-      // print(colorsInit);
-      // print("-------");
     });
   }
 
