@@ -3,6 +3,8 @@ import 'dart:math';
 import '../constants/main_colors.dart';
 import 'dart:async';
 
+import '../screens/game_selection_page.dart';
+
 
 class WordPairs extends StatefulWidget {
   const WordPairs({Key? key}) : super(key: key);
@@ -159,6 +161,11 @@ class _WordPairsState extends State<WordPairs> {
                     )),
                 ElevatedButton(
                     onPressed: () {
+                      if (timer.isActive){
+                        timer.cancel();
+                      }
+                      totalChosen=1;
+                      showInput=false;
                       restart();
                     },
                     child: Text(
@@ -198,27 +205,6 @@ class _WordPairsState extends State<WordPairs> {
                       ),]
                     ),SizedBox(height: 5,)],
 
-
-                  // CheckboxListTile(
-                  //   title: Text(options[0]),
-                  //   value: userGuess.contains(options[0]),
-                  //   onChanged: (value) => handleAnswerSelected(options[0]),
-                  // ),
-                  // CheckboxListTile(
-                  //   title: Text(options[1]),
-                  //   value: userGuess.contains(options[1]),
-                  //   onChanged: (value) => handleAnswerSelected(options[1]),
-                  // ),
-                  // CheckboxListTile(
-                  //   title: Text(options[2]),
-                  //   value: userGuess.contains(options[2]),
-                  //   onChanged: (value) => handleAnswerSelected(options[2]),
-                  // ),
-                  // CheckboxListTile(
-                  //   title: Text(options[3]),
-                  //   value: userGuess.contains(options[3]),
-                  //   onChanged: (value) => handleAnswerSelected(options[3]),
-                  // ),
                   ElevatedButton(
                     onPressed: () {
                       bool indicator=false;
@@ -274,25 +260,28 @@ class _WordPairsState extends State<WordPairs> {
       // barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
         return AlertDialog(
-          // <-- SEE HERE
           title: Text('level: ${totalChosen}'),
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
-                Text('the number was ${chosenWords.join(',')}'),
+                Text('the words were ${chosenWords.join(',')}'),
               ],
             ),
           ),
           actions: <Widget>[
             TextButton(
-              child: const Text('continue'),
+              child: const Text('restart'),
               onPressed: () {
+                Navigator.of(context).pop();
+                totalChosen=1;
+                showInput=false;
+                restart();
               },
             ),
             TextButton(
               child: const Text('go back to games'),
               onPressed: () {
-                Navigator.of(context).pop();
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => GameSelectionPage(),));
               },
             ),
           ],

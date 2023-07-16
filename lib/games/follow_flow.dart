@@ -41,19 +41,19 @@ class _FollowFlowState extends State<FollowFlow> {
     }
 
     current=chosenFlow[0];
-    Timer(Duration(milliseconds: 1200),() {
+    Timer(const Duration(milliseconds: 1200),() {
       setState(() {
         current=-1;
       });
     });
 
-    timer = Timer.periodic(Duration(milliseconds: 1300), (Timer t) {
+    timer = Timer.periodic(const Duration(milliseconds: 1300), (Timer t) {
       if (tracker!=chosenFlow.length) {
         setState(() {
           current=chosenFlow[tracker];
         });
         tracker++;
-        Timer(Duration(milliseconds: 1000),() {
+        Timer(const Duration(milliseconds: 1000),() {
           setState(() {
             current=-1;
           });
@@ -94,7 +94,7 @@ class _FollowFlowState extends State<FollowFlow> {
                       onPressed: () {
                         Navigator.of(context).pop();
                       },
-                      child: Text(
+                      child: const Text(
                         "go back",
                         style: TextStyle(fontSize: 20),
                       )),
@@ -102,7 +102,7 @@ class _FollowFlowState extends State<FollowFlow> {
                       onPressed: () {
                         restart();
                       },
-                      child: Text(
+                      child: const Text(
                         "Restart",
                         style: TextStyle(fontSize: 20),
                       )),
@@ -124,6 +124,14 @@ class _FollowFlowState extends State<FollowFlow> {
                       for(int i=0;i<col;i++)
                         GestureDetector(
                           onTap: (){
+                            setState(() {
+                              current=j*4+i;
+                            });
+                            Timer( Duration(milliseconds: 1000),() {
+                              setState(() {
+                                current=-1;
+                              });
+                            });
                             if(userGuess.length<chosenFlow.length){
                               userGuess.add(j*4+i);
                               if(userGuess.length==chosenFlow.length){
@@ -133,12 +141,12 @@ class _FollowFlowState extends State<FollowFlow> {
                                   });
                                   final snackBar = SnackBar(
                                     backgroundColor: MainColor.successColor,
-                                    duration: Duration(milliseconds: 1000),
+                                    duration: const Duration(milliseconds: 1000),
                                     content: const Text('Correct',style: TextStyle(fontSize: 40, color:Colors.white70),textAlign: TextAlign.center),
                                   );
 
                                   ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                                  Timer(Duration(milliseconds: 1600),(){
+                                  Timer(const Duration(milliseconds: 1600),(){
                                     restart();
                                   });
                                 }else{
@@ -149,12 +157,12 @@ class _FollowFlowState extends State<FollowFlow> {
                           },
                           child: AnimatedContainer(
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(8)),
+                              borderRadius: const BorderRadius.all(Radius.circular(8)),
                                 color: current==(j*4+i) ? MainColor.secondaryColor: Colors.blue.shade100,
                             ),
                             width: 90,
                             height: 90,
-                            duration: Duration(milliseconds: 500),
+                            duration: const Duration(milliseconds: 500),
                             curve: Curves.easeIn,
 
                           ),
@@ -188,7 +196,7 @@ class _FollowFlowState extends State<FollowFlow> {
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text('level: ${level}'),
-          content: SingleChildScrollView(
+          content: const SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
                 Text("You lost. Wanna play again?"),
@@ -205,7 +213,7 @@ class _FollowFlowState extends State<FollowFlow> {
             TextButton(
               child: const Text('go back to games'),
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context)=> GameSelectionPage(),));
+                Navigator.push(context, MaterialPageRoute(builder: (context)=> const GameSelectionPage(),));
               },
             ),
           ],

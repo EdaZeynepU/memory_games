@@ -3,6 +3,8 @@ import 'dart:math';
 import 'package:memory_games/constants/main_colors.dart';
 import 'dart:async';
 
+import '../screens/game_selection_page.dart';
+
 class RememberNumber extends StatefulWidget {
   const RememberNumber({Key? key}) : super(key: key);
 
@@ -49,7 +51,7 @@ class _RememberNumberState extends State<RememberNumber> {
   }
 
   void restart() {
-    timer.cancel();
+    // timer.cancel();
     setState(() {
       List<int> numList = [];
       showInput = false;
@@ -109,7 +111,11 @@ class _RememberNumberState extends State<RememberNumber> {
                     )),
                 ElevatedButton(
                     onPressed: () {
+                      setState(() {
+                        level=1;
+                      });
                       restart();
+                      showInput=false;
                     },
                     child: Text(
                       "Restart",
@@ -127,11 +133,11 @@ class _RememberNumberState extends State<RememberNumber> {
                   style: TextStyle(fontSize: 25),
                   keyboardType: TextInputType.number,
                   onChanged: (value) {
-                    if (value != null) {
+                    try{
                       setState(() {
                         userGuess = int.tryParse(value)!;
                       });
-                    } else {
+                    } catch (err){
                       userGuess = -1;
                     }
                     print(userGuess);
@@ -183,13 +189,18 @@ class _RememberNumberState extends State<RememberNumber> {
             TextButton(
               child: const Text('try again'),
               onPressed: () {
-                Navigator.of(context).pop();
+                setState(() {
+                  Navigator.of(context).pop();
+                  level=1;
+                  restart();
+                  showInput=false;
+                });
               },
             ),
             TextButton(
               child: const Text('go back to games'),
               onPressed: () {
-                Navigator.of(context).pop();
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => GameSelectionPage(),));
               },
             ),
           ],
