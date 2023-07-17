@@ -92,7 +92,7 @@ class _FollowFlowState extends State<FollowFlow> {
                 children: [
                   ElevatedButton(
                       onPressed: () {
-                        Navigator.of(context).pop();
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => GameSelectionPage(),));
                       },
                       child: const Text(
                         "go back",
@@ -100,6 +100,10 @@ class _FollowFlowState extends State<FollowFlow> {
                       )),
                   ElevatedButton(
                       onPressed: () {
+                        level=1;
+                        if(timer.isActive){
+                          timer.cancel();
+                        }
                         restart();
                       },
                       child: const Text(
@@ -208,6 +212,8 @@ class _FollowFlowState extends State<FollowFlow> {
               child: const Text('try again'),
               onPressed: () {
                 Navigator.of(context).pop();
+                level=1;
+                restart();
               },
             ),
             TextButton(

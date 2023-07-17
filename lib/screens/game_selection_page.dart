@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:memory_games/games/word_pairs.dart';
+import 'package:memory_games/screens/explanation_page.dart';
 import '../constants/main_colors.dart';
 import '../games/match_colors.dart';
 import '../games/match_cards.dart';
@@ -39,7 +40,11 @@ class _GameSelectionPageState extends State<GameSelectionPage> {
                             img: "images/match_colors.jpg",
                             gamePage: (BuildContext context) {
                               Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => Matchcolors(),
+                                builder: (context) => ExplanationPage(title: "match the colors", explanation: "In this game, you have to match the same colors with each other. In Order to do that you should tap the boxes, (you can see max 2 boxes' color at a time) and see if they match.",gamePage: (BuildContext context) {
+                              Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => Matchcolors(),
+                              ));
+                              },),
                               ));
                             }),
                         GameOptionCard(
@@ -47,7 +52,11 @@ class _GameSelectionPageState extends State<GameSelectionPage> {
                           img: "images/match_photos.jpg",
                           gamePage: (BuildContext context) {
                             Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => Matchcards(),
+                              builder: (context) => ExplanationPage(title: "match the cards", explanation: "In this game, you have to match the same photos with each other. In Order to do that you should tap the cards, (you can see max 2 cards' photos at a time) and see if they match.",gamePage: (BuildContext context) {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => Matchcards(),
+                                ));
+                              },),
                             ));
                           },
                         ),
@@ -66,7 +75,11 @@ class _GameSelectionPageState extends State<GameSelectionPage> {
                             img: "images/remember_number.jpg",
                             gamePage: (BuildContext context) {
                               Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => RememberNumber(),//for now
+                                builder: (context) => ExplanationPage(title: "remember the number", explanation: "A random number will be shown to you digit to digit, after all the digits are shown you should enter the number. After submitting if it's true you will level up. (this means it will get 1 digit longer)",gamePage: (BuildContext context) {
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => RememberNumber(),
+                                  ));
+                                },),
                               ));
                             }),
                         GameOptionCard(
@@ -74,7 +87,11 @@ class _GameSelectionPageState extends State<GameSelectionPage> {
                           img: "images/word_pairs.jpg",
                           gamePage: (BuildContext context) {
                             Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => WordPairs(),//for now
+                              builder: (context) => ExplanationPage(title: "words pair", explanation: "Random word or words will be chosen according to the level of your then shuffled with the same amount of word or words, after the chosen words are shown you should choose the chosen ones among these shuffled words. If you level up chosen words increase 1 more word.",gamePage: (BuildContext context) {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => WordPairs(),
+                                ));
+                              },),
                             ));
                           },
                         ),
@@ -93,7 +110,11 @@ class _GameSelectionPageState extends State<GameSelectionPage> {
                             img: "images/follow_flow.jpg",
                             gamePage: (BuildContext context) {
                               Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => FollowFlow(),
+                                builder: (context) => ExplanationPage(title: "follow the flow", explanation: "In this game first, you will see a sequence of boxes changing color in order and you have to remember the sequence, then when it completes its tour you should tap the same boxes in the same order.. If you choose the sequence right you will level up (this means it will get 1 digit longer)",gamePage: (BuildContext context) {
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => FollowFlow()
+                                  ));
+                                },),
                               ));
                             }),
                         GameOptionCard(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 
 import 'package:memory_games/constants/main_colors.dart';
+import 'package:memory_games/screens/game_selection_page.dart';
 
 class Matchcards extends StatefulWidget {
   const Matchcards({Key? key}) : super(key: key);
@@ -80,7 +81,7 @@ class _MatchcardsState extends State<Matchcards> {
                   children: [
                     ElevatedButton(
                       onPressed: () {
-                        Navigator.of(context).pop();
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => GameSelectionPage(),));
                       },
                       child: Text("go back", style: TextStyle(fontSize: 20)),
                     ),

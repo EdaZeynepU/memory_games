@@ -153,7 +153,7 @@ class _WordPairsState extends State<WordPairs> {
               children: [
                 ElevatedButton(
                     onPressed: () {
-                      Navigator.of(context).pop();
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => GameSelectionPage(),));
                     },
                     child: Text(
                       "go back",
