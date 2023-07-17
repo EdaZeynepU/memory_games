@@ -211,9 +211,9 @@ class _FollowFlowState extends State<FollowFlow> {
             TextButton(
               child: const Text('try again'),
               onPressed: () {
-                Navigator.of(context).pop();
                 level=1;
                 restart();
+                Navigator.of(context).pop();
               },
             ),
             TextButton(
